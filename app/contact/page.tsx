@@ -1,16 +1,27 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Badge } from "@/components/ui/badge"
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle, Zap, Network, Cloud, Leaf } from "lucide-react"
-import { useState } from "react"
-import { AnimatedSection } from "@/components/animated-section"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Badge } from "@/components/ui/badge";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  Send,
+  CheckCircle,
+  Zap,
+  Network,
+  Cloud,
+  Leaf,
+} from "lucide-react";
+import { useState } from "react";
+import { AnimatedSection } from "@/components/animated-section";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -20,20 +31,24 @@ export default function ContactPage() {
     company: "",
     service: "",
     message: "",
-  })
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     // Handle form submission here
-    console.log("Form submitted:", formData)
-  }
+    console.log("Form submitted:", formData);
+  };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   return (
     <div className="min-h-screen">
@@ -54,13 +69,16 @@ export default function ContactPage() {
             <AnimatedSection animation="fade-up" delay={200}>
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
                 Let's Build Something
-                <span className="block text-green-300 animate-pulse-slow">Amazing Together</span>
+                <span className="block text-green-300 animate-pulse-slow">
+                  Amazing Together
+                </span>
               </h1>
             </AnimatedSection>
             <AnimatedSection animation="fade-up" delay={400}>
               <p className="text-xl md:text-2xl text-green-100 max-w-3xl mx-auto leading-relaxed">
-                Ready to transform your infrastructure? Contact our expert team for a consultation and discover how we
-                can optimize your operations.
+                Ready to transform your infrastructure? Contact our expert team
+                for a consultation and discover how we can optimize your
+                operations.
               </p>
             </AnimatedSection>
           </div>
@@ -75,16 +93,22 @@ export default function ContactPage() {
               {/* Contact Form */}
               <AnimatedSection animation="fade-right">
                 <div>
-                  <h2 className="text-3xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
+                  <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                    Send Us a Message
+                  </h2>
                   <p className="text-lg text-gray-600 mb-8">
-                    Fill out the form below and we'll get back to you within 24 hours.
+                    Fill out the form below and we'll get back to you within 24
+                    hours.
                   </p>
 
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-6">
                       <AnimatedSection animation="slide-up" delay={100}>
                         <div>
-                          <Label htmlFor="name" className="text-sm font-medium text-gray-700 mb-2 block">
+                          <Label
+                            htmlFor="name"
+                            className="text-sm font-medium text-gray-700 mb-2 block"
+                          >
                             Full Name *
                           </Label>
                           <Input
@@ -101,7 +125,10 @@ export default function ContactPage() {
                       </AnimatedSection>
                       <AnimatedSection animation="slide-up" delay={200}>
                         <div>
-                          <Label htmlFor="email" className="text-sm font-medium text-gray-700 mb-2 block">
+                          <Label
+                            htmlFor="email"
+                            className="text-sm font-medium text-gray-700 mb-2 block"
+                          >
                             Email Address *
                           </Label>
                           <Input
@@ -121,7 +148,10 @@ export default function ContactPage() {
                     <div className="grid md:grid-cols-2 gap-6">
                       <AnimatedSection animation="slide-up" delay={300}>
                         <div>
-                          <Label htmlFor="phone" className="text-sm font-medium text-gray-700 mb-2 block">
+                          <Label
+                            htmlFor="phone"
+                            className="text-sm font-medium text-gray-700 mb-2 block"
+                          >
                             Phone Number
                           </Label>
                           <Input
@@ -137,7 +167,10 @@ export default function ContactPage() {
                       </AnimatedSection>
                       <AnimatedSection animation="slide-up" delay={400}>
                         <div>
-                          <Label htmlFor="company" className="text-sm font-medium text-gray-700 mb-2 block">
+                          <Label
+                            htmlFor="company"
+                            className="text-sm font-medium text-gray-700 mb-2 block"
+                          >
                             Company Name
                           </Label>
                           <Input
@@ -155,7 +188,10 @@ export default function ContactPage() {
 
                     <AnimatedSection animation="slide-up" delay={500}>
                       <div>
-                        <Label htmlFor="service" className="text-sm font-medium text-gray-700 mb-2 block">
+                        <Label
+                          htmlFor="service"
+                          className="text-sm font-medium text-gray-700 mb-2 block"
+                        >
                           Service Interest
                         </Label>
                         <select
@@ -166,10 +202,16 @@ export default function ContactPage() {
                           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent hover-glow transition-all duration-300"
                         >
                           <option value="">Select a service</option>
-                          <option value="energy">Energy & Electrical Engineering</option>
-                          <option value="network">IT Network Engineering</option>
+                          <option value="energy">
+                            Energy & Electrical Engineering
+                          </option>
+                          <option value="network">
+                            IT Network Engineering
+                          </option>
                           <option value="cloud">Cloud Solutions</option>
-                          <option value="environmental">Environmental Technology</option>
+                          <option value="environmental">
+                            Environmental Technology
+                          </option>
                           <option value="consulting">General Consulting</option>
                           <option value="other">Other</option>
                         </select>
@@ -178,7 +220,10 @@ export default function ContactPage() {
 
                     <AnimatedSection animation="slide-up" delay={600}>
                       <div>
-                        <Label htmlFor="message" className="text-sm font-medium text-gray-700 mb-2 block">
+                        <Label
+                          htmlFor="message"
+                          className="text-sm font-medium text-gray-700 mb-2 block"
+                        >
                           Project Details *
                         </Label>
                         <Textarea
@@ -210,9 +255,12 @@ export default function ContactPage() {
               {/* Contact Information */}
               <AnimatedSection animation="fade-left" delay={200}>
                 <div>
-                  <h2 className="text-3xl font-bold text-gray-900 mb-6">Contact Information</h2>
+                  <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                    Contact Information
+                  </h2>
                   <p className="text-lg text-gray-600 mb-8">
-                    Get in touch with our team through any of these channels. We're here to help!
+                    Get in touch with our team through any of these channels.
+                    We're here to help!
                   </p>
 
                   <div className="space-y-6 mb-8">
@@ -224,9 +272,15 @@ export default function ContactPage() {
                               <Phone className="h-6 w-6 text-green-600" />
                             </div>
                             <div>
-                              <h3 className="font-semibold text-gray-900 mb-2">Phone</h3>
-                              <p className="text-gray-600 mb-1">+1 (555) 123-4567</p>
-                              <p className="text-sm text-gray-500">Mon-Fri 8:00 AM - 6:00 PM</p>
+                              <h3 className="font-semibold text-gray-900 mb-2">
+                                Phone
+                              </h3>
+                              <p className="text-gray-600 mb-1">
+                                +2347077477604
+                              </p>
+                              <p className="text-sm text-gray-500">
+                                Mon-Fri 8:00 AM - 6:00 PM
+                              </p>
                             </div>
                           </div>
                         </CardContent>
@@ -241,9 +295,15 @@ export default function ContactPage() {
                               <Mail className="h-6 w-6 text-green-600" />
                             </div>
                             <div>
-                              <h3 className="font-semibold text-gray-900 mb-2">Email</h3>
-                              <p className="text-gray-600 mb-1">info@orianxresources.com</p>
-                              <p className="text-sm text-gray-500">We respond within 24 hours</p>
+                              <h3 className="font-semibold text-gray-900 mb-2">
+                                Email
+                              </h3>
+                              <p className="text-gray-600 mb-1">
+                                orianxresources@hotmail.com
+                              </p>
+                              <p className="text-sm text-gray-500">
+                                We respond within 24 hours
+                              </p>
                             </div>
                           </div>
                         </CardContent>
@@ -258,10 +318,18 @@ export default function ContactPage() {
                               <MapPin className="h-6 w-6 text-green-600" />
                             </div>
                             <div>
-                              <h3 className="font-semibold text-gray-900 mb-2">Office Location</h3>
-                              <p className="text-gray-600 mb-1">123 Engineering Plaza</p>
-                              <p className="text-gray-600 mb-1">Tech District, City 12345</p>
-                              <p className="text-sm text-gray-500">By appointment only</p>
+                              <h3 className="font-semibold text-gray-900 mb-2">
+                                Office Location
+                              </h3>
+                              <p className="text-gray-600 mb-1">
+                                123 Engineering Plaza
+                              </p>
+                              <p className="text-gray-600 mb-1">
+                                Tech District, City 12345
+                              </p>
+                              <p className="text-sm text-gray-500">
+                                By appointment only
+                              </p>
                             </div>
                           </div>
                         </CardContent>
@@ -276,9 +344,15 @@ export default function ContactPage() {
                               <Clock className="h-6 w-6 text-green-600" />
                             </div>
                             <div>
-                              <h3 className="font-semibold text-gray-900 mb-2">Business Hours</h3>
-                              <p className="text-gray-600 mb-1">Monday - Friday: 8:00 AM - 6:00 PM</p>
-                              <p className="text-gray-600 mb-1">Saturday: 9:00 AM - 2:00 PM</p>
+                              <h3 className="font-semibold text-gray-900 mb-2">
+                                Business Hours
+                              </h3>
+                              <p className="text-gray-600 mb-1">
+                                Monday - Friday: 8:00 AM - 6:00 PM
+                              </p>
+                              <p className="text-gray-600 mb-1">
+                                Saturday: 9:00 AM - 2:00 PM
+                              </p>
                               <p className="text-gray-600">Sunday: Closed</p>
                             </div>
                           </div>
@@ -296,9 +370,12 @@ export default function ContactPage() {
                           24/7 Emergency Support
                         </h3>
                         <p className="text-gray-600 mb-3">
-                          For critical infrastructure issues requiring immediate attention:
+                          For critical infrastructure issues requiring immediate
+                          attention:
                         </p>
-                        <p className="font-semibold text-green-700">Emergency Hotline: +1 (555) 999-0000</p>
+                        <p className="font-semibold text-green-700">
+                          Emergency Hotline: +2347077477604
+                        </p>
                       </CardContent>
                     </Card>
                   </AnimatedSection>
@@ -314,9 +391,12 @@ export default function ContactPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <AnimatedSection className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">How Can We Help?</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                How Can We Help?
+              </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Our expert team is ready to assist with any of these service areas
+                Our expert team is ready to assist with any of these service
+                areas
               </p>
             </AnimatedSection>
 
@@ -327,8 +407,12 @@ export default function ContactPage() {
                     <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 hover-scale">
                       <Zap className="h-8 w-8 text-green-600" />
                     </div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Energy Solutions</h3>
-                    <p className="text-gray-600 text-sm">Solar, backup power, energy audits</p>
+                    <h3 className="font-semibold text-gray-900 mb-2">
+                      Energy Solutions
+                    </h3>
+                    <p className="text-gray-600 text-sm">
+                      Solar, backup power, energy audits
+                    </p>
                   </CardContent>
                 </Card>
               </AnimatedSection>
@@ -339,8 +423,12 @@ export default function ContactPage() {
                     <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 hover-scale">
                       <Network className="h-8 w-8 text-green-600" />
                     </div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Network Engineering</h3>
-                    <p className="text-gray-600 text-sm">Enterprise networks, VPN, security</p>
+                    <h3 className="font-semibold text-gray-900 mb-2">
+                      Network Engineering
+                    </h3>
+                    <p className="text-gray-600 text-sm">
+                      Enterprise networks, VPN, security
+                    </p>
                   </CardContent>
                 </Card>
               </AnimatedSection>
@@ -351,8 +439,12 @@ export default function ContactPage() {
                     <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 hover-scale">
                       <Cloud className="h-8 w-8 text-green-600" />
                     </div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Cloud Infrastructure</h3>
-                    <p className="text-gray-600 text-sm">AWS, Azure, hybrid solutions</p>
+                    <h3 className="font-semibold text-gray-900 mb-2">
+                      Cloud Infrastructure
+                    </h3>
+                    <p className="text-gray-600 text-sm">
+                      AWS, Azure, hybrid solutions
+                    </p>
                   </CardContent>
                 </Card>
               </AnimatedSection>
@@ -363,8 +455,12 @@ export default function ContactPage() {
                     <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 hover-scale">
                       <Leaf className="h-8 w-8 text-green-600" />
                     </div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Sustainability</h3>
-                    <p className="text-gray-600 text-sm">Green tech, environmental consulting</p>
+                    <h3 className="font-semibold text-gray-900 mb-2">
+                      Sustainability
+                    </h3>
+                    <p className="text-gray-600 text-sm">
+                      Green tech, environmental consulting
+                    </p>
                   </CardContent>
                 </Card>
               </AnimatedSection>
@@ -378,8 +474,12 @@ export default function ContactPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <AnimatedSection className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
-              <p className="text-xl text-gray-600">Quick answers to common questions about our services</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-xl text-gray-600">
+                Quick answers to common questions about our services
+              </p>
             </AnimatedSection>
 
             <div className="space-y-8">
@@ -390,8 +490,9 @@ export default function ContactPage() {
                       How quickly can you respond to project inquiries?
                     </h3>
                     <p className="text-gray-600">
-                      We typically respond to all inquiries within 24 hours. For urgent matters, our emergency hotline
-                      provides immediate assistance 24/7.
+                      We typically respond to all inquiries within 24 hours. For
+                      urgent matters, our emergency hotline provides immediate
+                      assistance 24/7.
                     </p>
                   </CardContent>
                 </Card>
@@ -400,10 +501,13 @@ export default function ContactPage() {
               <AnimatedSection animation="fade-up" delay={200}>
                 <Card className="border-0 shadow-lg hover-lift hover-glow">
                   <CardContent className="p-8">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-3">Do you provide free consultations?</h3>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                      Do you provide free consultations?
+                    </h3>
                     <p className="text-gray-600">
-                      Yes, we offer free initial consultations to assess your needs and provide preliminary
-                      recommendations. This helps us understand your requirements better.
+                      Yes, we offer free initial consultations to assess your
+                      needs and provide preliminary recommendations. This helps
+                      us understand your requirements better.
                     </p>
                   </CardContent>
                 </Card>
@@ -412,10 +516,13 @@ export default function ContactPage() {
               <AnimatedSection animation="fade-up" delay={300}>
                 <Card className="border-0 shadow-lg hover-lift hover-glow">
                   <CardContent className="p-8">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-3">What industries do you serve?</h3>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                      What industries do you serve?
+                    </h3>
                     <p className="text-gray-600">
-                      We serve commercial, industrial, and hospitality sectors, with particular expertise in hotels,
-                      resorts, office buildings, and manufacturing facilities.
+                      We serve commercial, industrial, and hospitality sectors,
+                      with particular expertise in hotels, resorts, office
+                      buildings, and manufacturing facilities.
                     </p>
                   </CardContent>
                 </Card>
@@ -428,8 +535,9 @@ export default function ContactPage() {
                       Do you offer ongoing support and maintenance?
                     </h3>
                     <p className="text-gray-600">
-                      Absolutely. We provide comprehensive support packages including monitoring, maintenance, and
-                      optimization services to ensure your systems perform optimally.
+                      Absolutely. We provide comprehensive support packages
+                      including monitoring, maintenance, and optimization
+                      services to ensure your systems perform optimally.
                     </p>
                   </CardContent>
                 </Card>
@@ -443,10 +551,12 @@ export default function ContactPage() {
       <section className="py-20 bg-gradient-to-r from-green-800 to-green-700 text-white animate-gradient">
         <div className="container mx-auto px-4 text-center">
           <AnimatedSection animation="bounce-in">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Project?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Ready to Start Your Project?
+            </h2>
             <p className="text-xl mb-8 text-green-100 max-w-2xl mx-auto">
-              Don't wait to optimize your infrastructure. Contact us today and let's discuss how we can help transform
-              your operations.
+              Don't wait to optimize your infrastructure. Contact us today and
+              let's discuss how we can help transform your operations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
@@ -472,5 +582,5 @@ export default function ContactPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }

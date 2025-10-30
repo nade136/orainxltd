@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import {
   ArrowRight,
   Zap,
@@ -15,10 +15,10 @@ import {
   Sun,
   Wifi,
   Database,
-} from "lucide-react"
-import Link from "next/link"
-import { AnimatedCounter } from "@/components/animated-counter"
-import { AnimatedSection } from "@/components/animated-section"
+} from "lucide-react";
+import Link from "next/link";
+import { AnimatedCounter } from "@/components/animated-counter";
+import { AnimatedSection } from "@/components/animated-section";
 
 export default function ProjectsPage() {
   return (
@@ -40,13 +40,16 @@ export default function ProjectsPage() {
             <AnimatedSection animation="fade-up" delay={200}>
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
                 Proven Results Across
-                <span className="block text-green-300 animate-pulse-slow">Diverse Industries</span>
+                <span className="block text-green-300 animate-pulse-slow">
+                  Diverse Industries
+                </span>
               </h1>
             </AnimatedSection>
             <AnimatedSection animation="fade-up" delay={400}>
               <p className="text-xl md:text-2xl text-green-100 max-w-3xl mx-auto leading-relaxed">
-                Explore our flagship projects that demonstrate measurable impact, innovative solutions, and sustainable
-                outcomes for our clients.
+                Explore our flagship projects that demonstrate measurable
+                impact, innovative solutions, and sustainable outcomes for our
+                clients.
               </p>
             </AnimatedSection>
           </div>
@@ -59,25 +62,39 @@ export default function ProjectsPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <AnimatedSection animation="bounce-in" delay={100}>
               <div className="hover-scale">
-                <AnimatedCounter end={50} suffix="+" className="text-3xl md:text-4xl font-bold text-green-700 mb-2" />
+                <AnimatedCounter
+                  end={50}
+                  suffix="+"
+                  className="text-3xl md:text-4xl font-bold text-green-700 mb-2"
+                />
                 <div className="text-gray-600">Projects Completed</div>
               </div>
             </AnimatedSection>
             <AnimatedSection animation="bounce-in" delay={200}>
               <div className="hover-scale">
-                <AnimatedCounter end={84} suffix="%" className="text-3xl md:text-4xl font-bold text-green-700 mb-2" />
+                <AnimatedCounter
+                  end={84}
+                  suffix="%"
+                  className="text-3xl md:text-4xl font-bold text-green-700 mb-2"
+                />
                 <div className="text-gray-600">Average Cost Reduction</div>
               </div>
             </AnimatedSection>
             <AnimatedSection animation="bounce-in" delay={300}>
               <div className="hover-scale">
-                <AnimatedCounter end={100} suffix="%" className="text-3xl md:text-4xl font-bold text-green-700 mb-2" />
+                <AnimatedCounter
+                  end={100}
+                  suffix="%"
+                  className="text-3xl md:text-4xl font-bold text-green-700 mb-2"
+                />
                 <div className="text-gray-600">Client Satisfaction</div>
               </div>
             </AnimatedSection>
             <AnimatedSection animation="bounce-in" delay={400}>
               <div className="hover-scale">
-                <div className="text-3xl md:text-4xl font-bold text-green-700 mb-2">15+</div>
+                <div className="text-3xl md:text-4xl font-bold text-green-700 mb-2">
+                  15+
+                </div>
                 <div className="text-gray-600">Industries Served</div>
               </div>
             </AnimatedSection>
@@ -90,7 +107,9 @@ export default function ProjectsPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <AnimatedSection className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Flagship Projects</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Flagship Projects
+              </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Transformative solutions that deliver exceptional results
               </p>
@@ -111,7 +130,9 @@ export default function ProjectsPage() {
                         </div>
                       </div>
                       <div className="absolute top-4 left-4">
-                        <Badge className="bg-green-600 text-white hover-scale">Featured Project</Badge>
+                        <Badge className="bg-green-600 text-white hover-scale">
+                          Featured Project
+                        </Badge>
                       </div>
                     </div>
                     <CardContent className="p-8 lg:p-12">
@@ -120,24 +141,38 @@ export default function ProjectsPage() {
                           <Zap className="h-6 w-6 text-green-600" />
                         </div>
                         <div>
-                          <h3 className="text-2xl font-bold text-gray-900">Lake Side Hotel Utility Overhaul</h3>
-                          <p className="text-green-600 font-medium">Energy & Electrical Engineering</p>
+                          <h3 className="text-2xl font-bold text-gray-900">
+                            Lake Side Hotel Utility Overhaul
+                          </h3>
+                          <p className="text-green-600 font-medium">
+                            Energy & Electrical Engineering
+                          </p>
                         </div>
                       </div>
 
                       <p className="text-gray-600 mb-6 leading-relaxed">
-                        Complete electrical infrastructure transformation resulting in dramatic cost savings and
-                        improved operational efficiency for a luxury hospitality facility.
+                        Complete electrical infrastructure transformation
+                        resulting in dramatic cost savings and improved
+                        operational efficiency for a luxury hospitality
+                        facility.
                       </p>
 
                       <div className="grid grid-cols-2 gap-4 mb-6">
                         <div className="text-center p-4 bg-green-50 rounded-lg hover-scale">
-                          <div className="text-2xl font-bold text-green-700 mb-1">84%</div>
-                          <div className="text-sm text-gray-600">Cost Reduction</div>
+                          <div className="text-2xl font-bold text-green-700 mb-1">
+                            84%
+                          </div>
+                          <div className="text-sm text-gray-600">
+                            Cost Reduction
+                          </div>
                         </div>
                         <div className="text-center p-4 bg-green-50 rounded-lg hover-scale">
-                          <div className="text-2xl font-bold text-green-700 mb-1">6 Months</div>
-                          <div className="text-sm text-gray-600">Project Duration</div>
+                          <div className="text-2xl font-bold text-green-700 mb-1">
+                            6 Months
+                          </div>
+                          <div className="text-sm text-gray-600">
+                            Project Duration
+                          </div>
                         </div>
                       </div>
 
@@ -156,9 +191,9 @@ export default function ProjectsPage() {
                         </div>
                       </div>
 
-                      <Button className="bg-green-600 hover:bg-green-700 text-white hover-lift hover-glow">
+                      {/* <Button className="bg-green-600 hover:bg-green-700 text-white hover-lift hover-glow">
                         View Case Study <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
+                      </Button> */}
                     </CardContent>
                   </div>
                 </Card>
@@ -178,7 +213,9 @@ export default function ProjectsPage() {
                         </div>
                       </div>
                       <div className="absolute top-4 left-4">
-                        <Badge className="bg-blue-600 text-white hover-scale">Network Infrastructure</Badge>
+                        <Badge className="bg-blue-600 text-white hover-scale">
+                          Network Infrastructure
+                        </Badge>
                       </div>
                     </div>
                     <CardContent className="p-8 lg:p-12 lg:order-1">
@@ -187,24 +224,37 @@ export default function ProjectsPage() {
                           <Network className="h-6 w-6 text-green-600" />
                         </div>
                         <div>
-                          <h3 className="text-2xl font-bold text-gray-900">Ace of Space Smart Network</h3>
-                          <p className="text-green-600 font-medium">IT Network Engineering</p>
+                          <h3 className="text-2xl font-bold text-gray-900">
+                            Ace of Space Smart Network
+                          </h3>
+                          <p className="text-green-600 font-medium">
+                            IT Network Engineering
+                          </p>
                         </div>
                       </div>
 
                       <p className="text-gray-600 mb-6 leading-relaxed">
-                        Multi-VLAN network infrastructure with integrated solar power and secure VPN remote access for a
-                        modern hospitality facility.
+                        Multi-VLAN network infrastructure with integrated solar
+                        power and secure VPN remote access for a modern
+                        hospitality facility.
                       </p>
 
                       <div className="grid grid-cols-2 gap-4 mb-6">
                         <div className="text-center p-4 bg-green-50 rounded-lg hover-scale">
-                          <div className="text-2xl font-bold text-green-700 mb-1">99.9%</div>
-                          <div className="text-sm text-gray-600">Network Uptime</div>
+                          <div className="text-2xl font-bold text-green-700 mb-1">
+                            99.9%
+                          </div>
+                          <div className="text-sm text-gray-600">
+                            Network Uptime
+                          </div>
                         </div>
                         <div className="text-center p-4 bg-green-50 rounded-lg hover-scale">
-                          <div className="text-2xl font-bold text-green-700 mb-1">50+</div>
-                          <div className="text-sm text-gray-600">Connected Devices</div>
+                          <div className="text-2xl font-bold text-green-700 mb-1">
+                            450+
+                          </div>
+                          <div className="text-sm text-gray-600">
+                            Connected Devices
+                          </div>
                         </div>
                       </div>
 
@@ -223,9 +273,9 @@ export default function ProjectsPage() {
                         </div>
                       </div>
 
-                      <Button className="bg-green-600 hover:bg-green-700 text-white hover-lift hover-glow">
+                      {/* <Button className="bg-green-600 hover:bg-green-700 text-white hover-lift hover-glow">
                         View Case Study <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
+                      </Button> */}
                     </CardContent>
                   </div>
                 </Card>
@@ -245,7 +295,9 @@ export default function ProjectsPage() {
                         </div>
                       </div>
                       <div className="absolute top-4 left-4">
-                        <Badge className="bg-purple-600 text-white hover-scale">Cloud Solutions</Badge>
+                        <Badge className="bg-purple-600 text-white hover-scale">
+                          Cloud Solutions
+                        </Badge>
                       </div>
                     </div>
                     <CardContent className="p-8 lg:p-12">
@@ -254,24 +306,37 @@ export default function ProjectsPage() {
                           <Cloud className="h-6 w-6 text-green-600" />
                         </div>
                         <div>
-                          <h3 className="text-2xl font-bold text-gray-900">Cloud File Server Project</h3>
-                          <p className="text-green-600 font-medium">Cloud Solutions</p>
+                          <h3 className="text-2xl font-bold text-gray-900">
+                            Cloud File Server Project
+                          </h3>
+                          <p className="text-green-600 font-medium">
+                            Cloud Solutions
+                          </p>
                         </div>
                       </div>
 
                       <p className="text-gray-600 mb-6 leading-relaxed">
-                        Linux-based SAMBA server implementation for secure multi-device access and enterprise file
-                        sharing solutions.
+                        Linux-based SAMBA server implementation for secure
+                        multi-device access and enterprise file sharing
+                        solutions.
                       </p>
 
                       <div className="grid grid-cols-2 gap-4 mb-6">
                         <div className="text-center p-4 bg-green-50 rounded-lg hover-scale">
-                          <div className="text-2xl font-bold text-green-700 mb-1">10TB</div>
-                          <div className="text-sm text-gray-600">Storage Capacity</div>
+                          <div className="text-2xl font-bold text-green-700 mb-1">
+                            10TB
+                          </div>
+                          <div className="text-sm text-gray-600">
+                            Storage Capacity
+                          </div>
                         </div>
                         <div className="text-center p-4 bg-green-50 rounded-lg hover-scale">
-                          <div className="text-2xl font-bold text-green-700 mb-1">100+</div>
-                          <div className="text-sm text-gray-600">Concurrent Users</div>
+                          <div className="text-2xl font-bold text-green-700 mb-1">
+                            100+
+                          </div>
+                          <div className="text-sm text-gray-600">
+                            Concurrent Users
+                          </div>
                         </div>
                       </div>
 
@@ -290,9 +355,9 @@ export default function ProjectsPage() {
                         </div>
                       </div>
 
-                      <Button className="bg-green-600 hover:bg-green-700 text-white hover-lift hover-glow">
+                      {/* <Button className="bg-green-600 hover:bg-green-700 text-white hover-lift hover-glow">
                         View Case Study <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
+                      </Button> */}
                     </CardContent>
                   </div>
                 </Card>
@@ -312,7 +377,9 @@ export default function ProjectsPage() {
                         </div>
                       </div>
                       <div className="absolute top-4 left-4">
-                        <Badge className="bg-orange-600 text-white hover-scale">Smart Infrastructure</Badge>
+                        <Badge className="bg-orange-600 text-white hover-scale">
+                          Smart Infrastructure
+                        </Badge>
                       </div>
                     </div>
                     <CardContent className="p-8 lg:p-12 lg:order-1">
@@ -321,24 +388,36 @@ export default function ProjectsPage() {
                           <Building className="h-6 w-6 text-green-600" />
                         </div>
                         <div>
-                          <h3 className="text-2xl font-bold text-gray-900">Gladtrico International Integration</h3>
-                          <p className="text-green-600 font-medium">Integrated Solutions</p>
+                          <h3 className="text-2xl font-bold text-gray-900">
+                            Gladtrico International Integration
+                          </h3>
+                          <p className="text-green-600 font-medium">
+                            Integrated Solutions
+                          </p>
                         </div>
                       </div>
 
                       <p className="text-gray-600 mb-6 leading-relaxed">
-                        Residential smart infrastructure with business-grade networking and comprehensive cloud services
-                        integration.
+                        Residential smart infrastructure with business-grade
+                        networking and comprehensive cloud services integration.
                       </p>
 
                       <div className="grid grid-cols-2 gap-4 mb-6">
                         <div className="text-center p-4 bg-green-50 rounded-lg hover-scale">
-                          <div className="text-2xl font-bold text-green-700 mb-1">Smart</div>
-                          <div className="text-sm text-gray-600">Home Integration</div>
+                          <div className="text-2xl font-bold text-green-700 mb-1">
+                            Smart
+                          </div>
+                          <div className="text-sm text-gray-600">
+                            Home Integration
+                          </div>
                         </div>
                         <div className="text-center p-4 bg-green-50 rounded-lg hover-scale">
-                          <div className="text-2xl font-bold text-green-700 mb-1">24/7</div>
-                          <div className="text-sm text-gray-600">Monitoring</div>
+                          <div className="text-2xl font-bold text-green-700 mb-1">
+                            24/7
+                          </div>
+                          <div className="text-sm text-gray-600">
+                            Monitoring
+                          </div>
                         </div>
                       </div>
 
@@ -357,9 +436,9 @@ export default function ProjectsPage() {
                         </div>
                       </div>
 
-                      <Button className="bg-green-600 hover:bg-green-700 text-white hover-lift hover-glow">
+                      {/* <Button className="bg-green-600 hover:bg-green-700 text-white hover-lift hover-glow">
                         View Case Study <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
+                      </Button> */}
                     </CardContent>
                   </div>
                 </Card>
@@ -374,7 +453,9 @@ export default function ProjectsPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <AnimatedSection className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Project Categories</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Project Categories
+              </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Diverse expertise across multiple engineering disciplines
               </p>
@@ -387,10 +468,16 @@ export default function ProjectsPage() {
                     <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 hover-scale">
                       <Zap className="h-8 w-8 text-green-600" />
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4">Energy Projects</h3>
-                    <p className="text-gray-600 mb-4">Solar installations, energy audits, backup power systems</p>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                      Energy Projects
+                    </h3>
+                    <p className="text-gray-600 mb-4">
+                      Solar installations, energy audits, backup power systems
+                    </p>
                     <div className="text-2xl font-bold text-green-600">15+</div>
-                    <div className="text-sm text-gray-500">Completed Projects</div>
+                    <div className="text-sm text-gray-500">
+                      Completed Projects
+                    </div>
                   </CardContent>
                 </Card>
               </AnimatedSection>
@@ -401,10 +488,16 @@ export default function ProjectsPage() {
                     <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 hover-scale">
                       <Network className="h-8 w-8 text-green-600" />
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4">Network Projects</h3>
-                    <p className="text-gray-600 mb-4">Enterprise networks, VPN solutions, IT infrastructure</p>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                      Network Projects
+                    </h3>
+                    <p className="text-gray-600 mb-4">
+                      Enterprise networks, VPN solutions, IT infrastructure
+                    </p>
                     <div className="text-2xl font-bold text-green-600">20+</div>
-                    <div className="text-sm text-gray-500">Completed Projects</div>
+                    <div className="text-sm text-gray-500">
+                      Completed Projects
+                    </div>
                   </CardContent>
                 </Card>
               </AnimatedSection>
@@ -415,10 +508,16 @@ export default function ProjectsPage() {
                     <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 hover-scale">
                       <Cloud className="h-8 w-8 text-green-600" />
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4">Cloud Projects</h3>
-                    <p className="text-gray-600 mb-4">Cloud migration, file servers, hybrid solutions</p>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                      Cloud Projects
+                    </h3>
+                    <p className="text-gray-600 mb-4">
+                      Cloud migration, file servers, hybrid solutions
+                    </p>
                     <div className="text-2xl font-bold text-green-600">10+</div>
-                    <div className="text-sm text-gray-500">Completed Projects</div>
+                    <div className="text-sm text-gray-500">
+                      Completed Projects
+                    </div>
                   </CardContent>
                 </Card>
               </AnimatedSection>
@@ -429,10 +528,16 @@ export default function ProjectsPage() {
                     <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 hover-scale">
                       <Leaf className="h-8 w-8 text-green-600" />
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4">Environmental Projects</h3>
-                    <p className="text-gray-600 mb-4">Sustainability consulting, green building integration</p>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                      Environmental Projects
+                    </h3>
+                    <p className="text-gray-600 mb-4">
+                      Sustainability consulting, green building integration
+                    </p>
                     <div className="text-2xl font-bold text-green-600">8+</div>
-                    <div className="text-sm text-gray-500">Completed Projects</div>
+                    <div className="text-sm text-gray-500">
+                      Completed Projects
+                    </div>
                   </CardContent>
                 </Card>
               </AnimatedSection>
@@ -445,9 +550,12 @@ export default function ProjectsPage() {
       <section className="py-20 bg-gradient-to-r from-green-800 to-green-700 text-white animate-gradient">
         <div className="container mx-auto px-4 text-center">
           <AnimatedSection animation="bounce-in">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Next Project?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Ready to Start Your Next Project?
+            </h2>
             <p className="text-xl mb-8 text-green-100 max-w-2xl mx-auto">
-              Join our growing list of satisfied clients and experience the Orianx difference.
+              Join our growing list of satisfied clients and experience the
+              Orianx difference.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
@@ -472,5 +580,5 @@ export default function ProjectsPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }

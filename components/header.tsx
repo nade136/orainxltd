@@ -39,8 +39,8 @@ export default function Header() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 group">
-            <div className="relative w-10 h-10 group-hover:scale-110 transition-all duration-300 hover-glow">
-              <Image src="/images/orianx-logo.png" alt="Orianx Resources Logo" fill className="object-contain" />
+            <div className="relative w-10 h-10 rounded-full overflow-hidden group-hover:scale-110 transition-all duration-300 hover-glow">
+              <Image src="/images/orianx-logo.png" alt="Orianx Resources Logo" fill className="object-cover" />
             </div>
             <span className="font-bold text-xl text-gray-900 group-hover:text-teal-600 transition-colors duration-300">
               Orianx Resources
