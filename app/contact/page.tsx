@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { AnimatedSection } from "@/components/animated-section";
+import { quotes as quotesApi } from "@/lib/database";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -32,11 +33,44 @@ export default function ContactPage() {
     service: "",
     message: "",
   });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitOk, setSubmitOk] = useState<string | null>(null);
+  const [submitErr, setSubmitErr] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
+    setSubmitting(true);
+    setSubmitOk(null);
+    setSubmitErr(null);
+    const serviceLabels: Record<string, string> = {
+      energy: "Energy & Electrical Engineering",
+      network: "IT Network Engineering",
+      cloud: "Cloud Solutions",
+      environmental: "Environmental Technology",
+      consulting: "General Consulting",
+      other: "Other",
+    };
+    const subject = formData.service
+      ? `Quote: ${serviceLabels[formData.service] || formData.service}`
+      : "Quote Request";
+    const payload = {
+      name: formData.name,
+      email: formData.email,
+      subject,
+      message: formData.message,
+      phone: formData.phone || null,
+      company: formData.company || null,
+      service: formData.service || null,
+      status: "new" as const,
+    } as any;
+    const { error } = await quotesApi.createQuote(payload);
+    if (error) {
+      setSubmitErr("Failed to send. Please try again.");
+    } else {
+      setSubmitOk("Your request has been sent. We'll get back to you within 24 hours.");
+      setFormData({ name: "", email: "", phone: "", company: "", service: "", message: "" });
+    }
+    setSubmitting(false);
   };
 
   const handleChange = (
@@ -102,6 +136,16 @@ export default function ContactPage() {
                   </p>
 
                   <form onSubmit={handleSubmit} className="space-y-6">
+                    {submitOk && (
+                      <div className="p-3 rounded-md bg-green-50 text-green-700 border border-green-200 text-sm">
+                        {submitOk}
+                      </div>
+                    )}
+                    {submitErr && (
+                      <div className="p-3 rounded-md bg-red-50 text-red-700 border border-red-200 text-sm">
+                        {submitErr}
+                      </div>
+                    )}
                     <div className="grid md:grid-cols-2 gap-6">
                       <AnimatedSection animation="slide-up" delay={100}>
                         <div>
@@ -243,9 +287,10 @@ export default function ContactPage() {
                       <Button
                         type="submit"
                         size="lg"
-                        className="w-full bg-green-600 hover:bg-green-700 text-white hover-lift hover-glow"
+                        className="w-full bg-green-600 hover:bg-green-700 text-white hover-lift hover-glow disabled:opacity-60 disabled:cursor-not-allowed"
+                        disabled={submitting}
                       >
-                        Send Message <Send className="ml-2 h-5 w-5" />
+                        {submitting ? "Sending..." : "Send Message"} <Send className="ml-2 h-5 w-5" />
                       </Button>
                     </AnimatedSection>
                   </form>

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
@@ -140,11 +141,17 @@ export default function AdminDashboard() {
                 Projects
               </Button>
               <Button
+                onClick={() => router.push("/admin/quotes")}
                 variant="ghost"
                 className="w-full justify-start text-white hover:bg-white/10"
               >
                 <MessageSquare className="w-4 h-4 mr-3" />
-                Messages
+                Quotes
+                {dashboardStats.stats.newMessages > 0 && (
+                  <Badge className="ml-auto bg-teal-600 text-white">
+                    {dashboardStats.stats.newMessages}
+                  </Badge>
+                )}
               </Button>
             </div>
 
@@ -311,9 +318,12 @@ export default function AdminDashboard() {
                   <FileText className="w-4 h-4 mr-2" />
                   Manage Projects
                 </Button>
-                <Button className="w-full justify-start bg-teal-600 hover:bg-teal-700 text-white">
+                <Button
+                  onClick={() => router.push("/admin/quotes")}
+                  className="w-full justify-start bg-teal-600 hover:bg-teal-700 text-white"
+                >
                   <MessageSquare className="w-4 h-4 mr-2" />
-                  View Messages
+                  View Quotes
                 </Button>
                 <Button className="w-full justify-start bg-teal-600 hover:bg-teal-700 text-white">
                   <BarChart3 className="w-4 h-4 mr-2" />

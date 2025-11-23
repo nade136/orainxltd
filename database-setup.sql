@@ -41,6 +41,10 @@ CREATE INDEX IF NOT EXISTS idx_projects_status ON projects(status);
 CREATE INDEX IF NOT EXISTS idx_projects_created_at ON projects(created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_contact_messages_status ON contact_messages(status);
 CREATE INDEX IF NOT EXISTS idx_contact_messages_created_at ON contact_messages(created_at DESC);
+-- Quotes indexes
+CREATE INDEX IF NOT EXISTS idx_quotes_created_at ON quotes(created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_quotes_status ON quotes(status);
+CREATE INDEX IF NOT EXISTS idx_quotes_unreplied ON quotes(status) WHERE status <> 'replied';
 CREATE INDEX IF NOT EXISTS idx_analytics_date ON analytics(date DESC);
 
 -- Create updated_at trigger for projects table
@@ -55,6 +59,32 @@ $$ language 'plpgsql';
 CREATE TRIGGER update_projects_updated_at 
     BEFORE UPDATE ON projects 
     FOR EACH ROW 
+    EXECUTE FUNCTION update_updated_at_column();
+
+-- Quotes table
+CREATE TABLE IF NOT EXISTS quotes (
+  id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  name TEXT NOT NULL,
+  email TEXT NOT NULL,
+  subject TEXT NOT NULL,
+  message TEXT NOT NULL,
+  status TEXT NOT NULL DEFAULT 'new' CHECK (status IN ('new','read','replied')),
+  phone TEXT,
+  company TEXT,
+  service TEXT,
+  read_at TIMESTAMPTZ,
+  read_by UUID,
+  replied_at TIMESTAMPTZ,
+  replied_by UUID,
+  archived BOOLEAN DEFAULT FALSE,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- updated_at trigger for quotes
+CREATE TRIGGER update_quotes_updated_at
+    BEFORE UPDATE ON quotes
+    FOR EACH ROW
     EXECUTE FUNCTION update_updated_at_column();
 
 -- Insert sample data
@@ -80,6 +110,7 @@ INSERT INTO analytics (page_views, unique_visitors, date) VALUES
 ALTER TABLE projects ENABLE ROW LEVEL SECURITY;
 ALTER TABLE contact_messages ENABLE ROW LEVEL SECURITY;
 ALTER TABLE analytics ENABLE ROW LEVEL SECURITY;
+ALTER TABLE quotes ENABLE ROW LEVEL SECURITY;
 
 -- Projects policies - allow all operations for authenticated users
 CREATE POLICY "Allow all operations for authenticated users" ON projects
@@ -92,6 +123,14 @@ CREATE POLICY "Allow all operations for authenticated users" ON contact_messages
 -- Analytics policies - allow all operations for authenticated users
 CREATE POLICY "Allow all operations for authenticated users" ON analytics
   FOR ALL USING (auth.role() = 'authenticated');
+
+-- Quotes policies
+CREATE POLICY "Allow all operations for authenticated users" ON quotes
+  FOR ALL USING (auth.role() = 'authenticated');
+
+-- Allow public insert for quotes (public website form)
+CREATE POLICY "Allow public insert for quotes" ON quotes
+  FOR INSERT WITH CHECK (true);
 
 -- Allow public insert for contact messages (for contact form)
 CREATE POLICY "Allow public insert for contact messages" ON contact_messages

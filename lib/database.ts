@@ -30,6 +30,20 @@ export interface Analytics {
   created_at: string;
 }
 
+export interface Quote {
+  id: string;
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+  status: "new" | "read" | "replied";
+  phone?: string | null;
+  company?: string | null;
+  service?: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
 // Database operations
 export const database = {
   // Projects
@@ -136,18 +150,20 @@ export const database = {
       .from("projects")
       .select("*", { count: "exact", head: true });
 
+    // Quotes are the primary inbox
     const { count: messagesCount } = await supabase
-      .from("contact_messages")
+      .from("quotes")
       .select("*", { count: "exact", head: true });
 
+    // Unreplied count (needs attention)
     const { count: newMessagesCount } = await supabase
-      .from("contact_messages")
+      .from("quotes")
       .select("*", { count: "exact", head: true })
-      .eq("status", "new");
+      .neq("status", "replied");
 
     // Get recent activity
     const { data: recentMessages } = await supabase
-      .from("contact_messages")
+      .from("quotes")
       .select("*")
       .order("created_at", { ascending: false })
       .limit(5);
@@ -169,6 +185,36 @@ export const database = {
         projects: recentProjects || [],
       },
     };
+  },
+};
+
+// Quotes CRUD
+export const quotes = {
+  async getQuotes() {
+    const { data, error } = await supabase
+      .from("quotes")
+      .select("*")
+      .order("created_at", { ascending: false });
+    return { data: data as Quote[] | null, error };
+  },
+  async createQuote(q: Omit<Quote, "id" | "created_at" | "updated_at">) {
+    const { data, error } = await supabase
+      .from("quotes")
+      .insert([q])
+      .select();
+    return { data: (data as Quote[] | null)?.[0] ?? null, error };
+  },
+  async updateQuote(id: string, updates: Partial<Quote>) {
+    const { data, error } = await supabase
+      .from("quotes")
+      .update(updates)
+      .eq("id", id)
+      .select();
+    return { data: (data as Quote[] | null)?.[0] ?? null, error };
+  },
+  async deleteQuote(id: string) {
+    const { error } = await supabase.from("quotes").delete().eq("id", id);
+    return { error };
   },
 };
 
