@@ -189,16 +189,10 @@ export default function AdminQuotesPage() {
               <Button
                 variant="ghost"
                 className="w-full justify-start text-white hover:bg-white/10"
+                onClick={() => router.push("/admin/about")}
               >
                 <Database className="w-4 h-4 mr-3" />
-                Content
-              </Button>
-              <Button
-                variant="ghost"
-                className="w-full justify-start text-white hover:bg-white/10"
-              >
-                <Shield className="w-4 h-4 mr-3" />
-                Security
+                About
               </Button>
               <Button
                 variant="ghost"

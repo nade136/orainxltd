@@ -136,3 +136,39 @@ CREATE POLICY "Allow public insert for quotes" ON quotes
 CREATE POLICY "Allow public insert for contact messages" ON contact_messages
   FOR INSERT WITH CHECK (true);
 
+-- About content table
+CREATE TABLE IF NOT EXISTS about_content (
+  id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  hero_title TEXT,
+  hero_description TEXT,
+  hero_image_url TEXT,
+  section1_title TEXT,
+  section1_content TEXT,
+  section1_image_url TEXT,
+  section2_title TEXT,
+  section2_content TEXT,
+  section2_image_url TEXT,
+  mission_statement TEXT,
+  vision_statement TEXT,
+  values_list TEXT[] DEFAULT '{}',
+  team_intro_text TEXT,
+  is_published BOOLEAN DEFAULT TRUE,
+  draft_json JSONB,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- updated_at trigger for about_content
+CREATE TRIGGER update_about_content_updated_at
+    BEFORE UPDATE ON about_content
+    FOR EACH ROW
+    EXECUTE FUNCTION update_updated_at_column();
+
+-- Enable RLS and policies for about_content
+ALTER TABLE about_content ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "About content public read" ON about_content
+  FOR SELECT USING (true);
+
+CREATE POLICY "About content admin write" ON about_content
+  FOR ALL USING (auth.role() = 'authenticated');

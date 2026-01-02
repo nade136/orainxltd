@@ -33,7 +33,11 @@ import { database } from "@/lib/database";
 
 export default function AdminDashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [dashboardStats, setDashboardStats] = useState({
+  type DashboardStats = {
+    stats: { projects: number; messages: number; newMessages: number };
+    recentActivity: { messages: any[]; projects: any[] };
+  };
+  const [dashboardStats, setDashboardStats] = useState<DashboardStats>({
     stats: { projects: 0, messages: 0, newMessages: 0 },
     recentActivity: { messages: [], projects: [] },
   });
@@ -162,16 +166,10 @@ export default function AdminDashboard() {
               <Button
                 variant="ghost"
                 className="w-full justify-start text-white hover:bg-white/10"
+                onClick={() => router.push("/admin/about")}
               >
                 <Database className="w-4 h-4 mr-3" />
-                Content
-              </Button>
-              <Button
-                variant="ghost"
-                className="w-full justify-start text-white hover:bg-white/10"
-              >
-                <Shield className="w-4 h-4 mr-3" />
-                Security
+                About
               </Button>
               <Button
                 variant="ghost"

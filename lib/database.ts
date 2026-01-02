@@ -44,6 +44,41 @@ export interface Quote {
   updated_at: string;
 }
 
+export interface AboutContent {
+  id: string;
+  hero_title: string | null;
+  hero_description: string | null;
+  hero_image_url: string | null;
+  section1_title: string | null;
+  section1_content: string | null;
+  section1_image_url: string | null;
+  section2_title: string | null;
+  section2_content: string | null;
+  section2_image_url: string | null;
+  mission_statement: string | null;
+  vision_statement: string | null;
+  values_list: string[] | null;
+  team_intro_text: string | null;
+  overview_paragraph2?: string | null;
+  projects_completed?: number | null;
+  sectors_json?: any;
+  services_json?: any;
+  projects_json?: any;
+  why_choose_json?: any;
+  principles_json?: any;
+  contact_json?: any;
+  cta_title?: string | null;
+  cta_subtitle?: string | null;
+  cta_primary_label?: string | null;
+  cta_primary_href?: string | null;
+  cta_secondary_label?: string | null;
+  cta_secondary_href?: string | null;
+  is_published: boolean;
+  draft_json: any | null;
+  created_at: string;
+  updated_at: string;
+}
+
 // Database operations
 export const database = {
   // Projects
@@ -215,6 +250,46 @@ export const quotes = {
   async deleteQuote(id: string) {
     const { error } = await supabase.from("quotes").delete().eq("id", id);
     return { error };
+  },
+};
+
+export const aboutContent = {
+  async getAboutContent() {
+    const { data, error } = await supabase
+      .from("about_content")
+      .select("*")
+      .order("created_at", { ascending: false })
+      .limit(1);
+    const row = (data as AboutContent[] | null)?.[0] ?? null;
+    return { data: row, error } as { data: AboutContent | null; error: any };
+  },
+  async createAboutContent(initial: Partial<AboutContent>) {
+    const { data, error } = await supabase
+      .from("about_content")
+      .insert([initial])
+      .select();
+    return { data: (data as AboutContent[] | null)?.[0] ?? null, error } as {
+      data: AboutContent | null;
+      error: any;
+    };
+  },
+  async updateAboutContent(id: string, updates: Partial<AboutContent>) {
+    const { data, error } = await supabase
+      .from("about_content")
+      .update(updates)
+      .eq("id", id)
+      .select();
+    return { data: (data as AboutContent[] | null)?.[0] ?? null, error } as {
+      data: AboutContent | null;
+      error: any;
+    };
+  },
+  async upsertAboutContent(updates: Partial<AboutContent>) {
+    const existing = await this.getAboutContent();
+    if (existing.data) {
+      return this.updateAboutContent(existing.data.id, updates);
+    }
+    return this.createAboutContent(updates);
   },
 };
 

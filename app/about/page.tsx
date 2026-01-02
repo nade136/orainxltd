@@ -26,8 +26,10 @@ import {
 import Link from "next/link"
 import { AnimatedCounter } from "@/components/animated-counter"
 import { AnimatedSection } from "@/components/animated-section"
+import { aboutContent } from "@/lib/database"
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const { data: c } = await aboutContent.getAboutContent()
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -47,15 +49,16 @@ export default function AboutPage() {
 
             <AnimatedSection animation="fade-up" delay={200}>
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Leading Africa's Infrastructure
+                {c?.hero_title || "Leading Africa's Infrastructure"}
                 <span className="block text-green-300 animate-pulse-slow">Revolution</span>
               </h1>
             </AnimatedSection>
 
             <AnimatedSection animation="fade-up" delay={400}>
               <p className="text-xl md:text-2xl text-green-100 max-w-3xl mx-auto leading-relaxed">
-                We are a multidisciplinary engineering and consulting firm committed to delivering innovative solutions
-                that bridge energy, technology, and sustainability.
+                {c?.hero_description || (
+                  "We are a multidisciplinary engineering and consulting firm committed to delivering innovative solutions that bridge energy, technology, and sustainability."
+                )}
               </p>
             </AnimatedSection>
           </div>
@@ -69,16 +72,15 @@ export default function AboutPage() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <AnimatedSection animation="fade-right">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Company Overview</h2>
-                <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                  Orianx Resources Limited is a multidisciplinary engineering and consulting firm delivering advanced
-                  solutions in energy, IT infrastructure, cloud technologies, and environmental innovation. We serve
-                  clients across commercial, industrial, and hospitality sectors with a focus on optimizing operations,
-                  reducing costs, and promoting sustainable practices.
+                <p className="text-lg text-gray-600 mb-6 leading-relaxed whitespace-pre-wrap">
+                  {c?.section1_content || (
+                    "Orianx Resources Limited is a multidisciplinary engineering and consulting firm delivering advanced solutions in energy, IT infrastructure, cloud technologies, and environmental innovation. We serve clients across commercial, industrial, and hospitality sectors with a focus on optimizing operations, reducing costs, and promoting sustainable practices."
+                  )}
                 </p>
-                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                  Our work is driven by innovation, technical precision, and a commitment to excellence. With a team of
-                  highly skilled professionals, we help clients navigate complex infrastructure challenges through
-                  practical, data-driven solutions.
+                <p className="text-lg text-gray-600 mb-8 leading-relaxed whitespace-pre-wrap">
+                  {c?.overview_paragraph2 || (
+                    "Our work is driven by innovation, technical precision, and a commitment to excellence. With a team of highly skilled professionals, we help clients navigate complex infrastructure challenges through practical, data-driven solutions."
+                  )}
                 </p>
                 <Button asChild size="lg" className="bg-green-600 hover:bg-green-700 text-white hover-lift hover-glow">
                   <Link href="/services">
@@ -94,8 +96,8 @@ export default function AboutPage() {
                       <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <Building2 className="h-8 w-8 text-green-600" />
                       </div>
-                      <h3 className="font-semibold text-gray-900 mb-2">Commercial</h3>
-                      <p className="text-sm text-gray-600">Office buildings, retail spaces</p>
+                      <h3 className="font-semibold text-gray-900 mb-2">{(c?.sectors_json?.[0]?.title) || "Commercial"}</h3>
+                      <p className="text-sm text-gray-600">{(c?.sectors_json?.[0]?.description) || "Office buildings, retail spaces"}</p>
                     </CardContent>
                   </Card>
 
@@ -104,8 +106,8 @@ export default function AboutPage() {
                       <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <Factory className="h-8 w-8 text-green-600" />
                       </div>
-                      <h3 className="font-semibold text-gray-900 mb-2">Industrial</h3>
-                      <p className="text-sm text-gray-600">Manufacturing facilities</p>
+                      <h3 className="font-semibold text-gray-900 mb-2">{(c?.sectors_json?.[1]?.title) || "Industrial"}</h3>
+                      <p className="text-sm text-gray-600">{(c?.sectors_json?.[1]?.description) || "Manufacturing facilities"}</p>
                     </CardContent>
                   </Card>
 
@@ -114,14 +116,14 @@ export default function AboutPage() {
                       <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <Hotel className="h-8 w-8 text-green-600" />
                       </div>
-                      <h3 className="font-semibold text-gray-900 mb-2">Hospitality</h3>
-                      <p className="text-sm text-gray-600">Hotels, resorts, lodges</p>
+                      <h3 className="font-semibold text-gray-900 mb-2">{(c?.sectors_json?.[2]?.title) || "Hospitality"}</h3>
+                      <p className="text-sm text-gray-600">{(c?.sectors_json?.[2]?.description) || "Hotels, resorts, lodges"}</p>
                     </CardContent>
                   </Card>
 
                   <Card className="border-0 shadow-lg hover-lift hover-glow">
                     <CardContent className="p-6 text-center">
-                      <AnimatedCounter end={50} suffix="+" className="text-2xl font-bold text-green-700 mb-1" />
+                      <AnimatedCounter end={(c?.projects_completed ?? 50)} suffix="+" className="text-2xl font-bold text-green-700 mb-1" />
                       <div className="text-sm text-gray-600">Projects Completed</div>
                     </CardContent>
                   </Card>
@@ -145,8 +147,9 @@ export default function AboutPage() {
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
                     <p className="text-lg text-gray-600 leading-relaxed">
-                      To deliver cutting-edge engineering and IT solutions that empower businesses, protect the
-                      environment, and ensure long-term operational resilience.
+                      {c?.mission_statement || (
+                        "To deliver cutting-edge engineering and IT solutions that empower businesses, protect the environment, and ensure long-term operational resilience."
+                      )}
                     </p>
                   </CardContent>
                 </Card>
@@ -160,8 +163,9 @@ export default function AboutPage() {
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
                     <p className="text-lg text-gray-600 leading-relaxed">
-                      To lead Africa's transition to smart, sustainable infrastructure through innovation in energy,
-                      cloud, and environmental technologies.
+                      {c?.vision_statement || (
+                        "To lead Africa's transition to smart, sustainable infrastructure through innovation in energy, cloud, and environmental technologies."
+                      )}
                     </p>
                   </CardContent>
                 </Card>
